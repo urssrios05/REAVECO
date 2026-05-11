@@ -1,7 +1,10 @@
 <!DOCTYPE HTML>
 <html>
     <?php include("includes/head.php"); ?>
+	
 
+
+			<!-- Header -->
 			<!-- Header -->
 				<div id="header-wrapper">
 					<header id="header" class="container">
@@ -9,7 +12,7 @@
 						<!-- Logo -->
 							<div id="logo">
 								<h1><a href="index.php"><img src="images/logo.png" alt=""></a></h1>
-								<span>by flowdesigns</span>
+								<span></span>
 							</div>
 
 						<!-- Navefacion -->
@@ -107,22 +110,41 @@
 						<div class="row gtr-200">
 							<div class="col-4 col-12-medium">
 
-								<!-- Sidebar -->
-									<div id="sidebar">
-										<section class="widget thumbnails">
-											<h3>Trabajo de campo</h3>
-											<div class="grid">
-												<div class="row gtr-50">
-													<div class="col-6"><a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a></div>
-													<div class="col-6"><a href="#" class="image fit"><img src="images/pic05.jpg" alt="" /></a></div>
-													<div class="col-6"><a href="#" class="image fit"><img src="images/pic06.jpg" alt="" /></a></div>
-													<div class="col-6"><a href="#" class="image fit"><img src="images/pic07.jpg" alt="" /></a></div>
-												</div>
+							<!-- Sidebar -->
+							<div id="sidebar">
+								<section class="widget thumbnails">
+									<h3>Trabajo de campo</h3>
+
+									<div class="grid">
+										<div class="row gtr-50">
+
+										<?php
+										require_once("includes/conexion_frond.php");
+
+										$sqlGaleria = "SELECT * FROM reaveco_imagenes ORDER BY id DESC LIMIT 4";
+										$resultGaleria = $conexion->query($sqlGaleria);
+
+										while($img = $resultGaleria->fetch_assoc()):
+										?>
+
+											<div class="col-6">
+												<a href="galeria.php" class="image fit">
+													<img 
+													src="images/galeria/<?php echo $img['archivo']; ?>" 
+													alt=""
+													loading="lazy"
+													/>
+												</a>
 											</div>
-											<a href="#" class="button icon fa-solid fa-images"></a>
-										</section>
+
+										<?php endwhile; ?>
+
+										</div>
 									</div>
 
+									<a href="galeria.php" class="button icon fa-solid fa-images"></a>
+								</section>
+							</div>
 							</div>
 							<div class="col-8 col-12-medium imp-medium">
 

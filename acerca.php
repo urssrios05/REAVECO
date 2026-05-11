@@ -9,7 +9,7 @@
 						<!-- Logo -->
 							<div id="logo">
 								<h1><a href="index.php"><img src="images/logo.png" alt=""></a></h1>
-								<span>by flowdesigns</span>
+								<span></span>
 							</div>
 
 						<!-- Navefacion -->

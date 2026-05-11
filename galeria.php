@@ -1,3 +1,10 @@
+<?php
+require_once("includes/conexion_frond.php");
+
+$sql = "SELECT * FROM reaveco_imagenes ORDER BY id DESC";
+$result = $conexion->query($sql);
+?>
+
 <!DOCTYPE HTML>
 <html>
     <?php include("includes/head.php"); ?>
@@ -9,7 +16,7 @@
 						<!-- Logo -->
 							<div id="logo">
 								<h1><a href="index.php"><img src="images/logo.png" alt=""></a></h1>
-								<span>by flowdesigns</span>
+								<span></span>
 							</div>
 
 						<!-- Navefacion -->
@@ -32,28 +39,37 @@
 						<div id="content">
 
 							<!-- Content -->
-								<article>
 
 									<h2>Galeria</h2>
 
-									<p>Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus.
-									Praesent semper mod quis eget mi. Etiam eu ante risus. Aliquam erat volutpat.
-									Aliquam luctus et mattis lectus sit amet pulvinar. Nam turpis nisi
-									consequat etiam lorem ipsum dolor sit amet nullam.</p>
+									<!-- FILTROS -->
+									<div class="filters">
+									<button class="filter active" data-filter="all">Todos</button>
+									<button class="filter" data-filter="manzana">Manzana</button>
+									<button class="filter" data-filter="naranja">Naranja</button>
+									<button class="filter" data-filter="platano">Plátano</button>
+									</div>
 
-									<h3>More intriguing information</h3>
-									<p>
+									<!-- GALERÍA -->
+									<div class="gallery">
 
-									<p><img src="images/images.png" alt=""></p></p>
+									<?php while($row = $result->fetch_assoc()): ?>
 
-									<p>Phasellus odio risus, faucibus et viverra vitae, eleifend ac purus. Praesent mattis, enim
-									quis hendrerit porttitor, sapien tortor viverra magna, sit amet rhoncus nisl lacus nec arcu.
-									Suspendisse laoreet metus ut metus imperdiet interdum aliquam justo tincidunt. Mauris dolor urna,
-									fringilla vel malesuada ac, dignissim eu mi. Praesent mollis massa ac nulla pretium pretium.
-									Maecenas tortor mauris, consectetur pellentesque dapibus eget, tincidunt vitae arcu.
-									Vestibulum purus augue, tincidunt sit amet iaculis id, porta eu purus.</p>
+									<div class="item" data-category="<?php echo $row['categoria']; ?>">
 
-								</article>
+										<img src="images/galeria/<?php echo $row['archivo']; ?>" 
+											 loading="lazy"
+										     alt="">
+
+										<div class="overlay">
+										<h3><?php echo $row['titulo']; ?></h3>
+										</div>
+
+									</div>
+
+									<?php endwhile; ?>
+
+									</div>
 
 						</div>
 					</div>
