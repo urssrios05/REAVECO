@@ -1,7 +1,10 @@
 <!DOCTYPE HTML>
 <html>
     <?php include("includes/head.php"); ?>
+	
 
+
+			<!-- Header -->
 			<!-- Header -->
 				<div id="header-wrapper">
 					<header id="header" class="container">
