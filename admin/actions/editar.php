@@ -9,17 +9,22 @@ if (!isset($_SESSION['admin'])) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $id = $_POST['id'];
-    $titulo = $_POST['titulo'];
-    $categoria = $_POST['categoria'];
+    $id = (int) ($_POST['id'] ?? 0);
+    $titulo = trim($_POST['titulo'] ?? '');
+    $categoria = trim($_POST['categoria'] ?? '');
+    $descripcion = trim($_POST['descripcion'] ?? '');
+
+    if ($id <= 0 || $titulo === '' || $categoria === '' || $descripcion === '') {
+        die("Datos invalidos");
+    }
 
     $stmt = $conexion->prepare("
         UPDATE reaveco_imagenes 
-        SET titulo = ?, categoria = ?
+        SET titulo = ?, categoria = ?, descripcion = ?
         WHERE id = ?
     ");
 
-    $stmt->bind_param("ssi", $titulo, $categoria, $id);
+    $stmt->bind_param("sssi", $titulo, $categoria, $descripcion, $id);
     $stmt->execute();
 
     header("Location: ../admin.php");

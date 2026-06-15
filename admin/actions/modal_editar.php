@@ -13,6 +13,9 @@
                 <label>Título</label>
                 <input type="text" name="titulo" id="edit-titulo" required>
                 <br>
+                <label>Descripcion</label>
+                <textarea type="text" name="descripcion" id="edit-descripcion" required></textarea>
+                <br>
                 <label>Categoría</label>
                 <select type="select" name="categoria" id="edit-categoria" required>
                     <option value="manzana">Manzana</option>

@@ -54,20 +54,36 @@ $result = $conexion->query($sql);
 									<div class="gallery">
 
 									<?php while($row = $result->fetch_assoc()): ?>
+									<?php
+										$archivo = htmlspecialchars($row['archivo'], ENT_QUOTES, 'UTF-8');
+										$titulo = htmlspecialchars($row['titulo'], ENT_QUOTES, 'UTF-8');
+										$categoria = htmlspecialchars($row['categoria'], ENT_QUOTES, 'UTF-8');
+										$fecha = htmlspecialchars($row['fecha'], ENT_QUOTES, 'UTF-8');
+										$descripcion = htmlspecialchars($row['descripcion'], ENT_QUOTES, 'UTF-8');
+									?>
 
-									<div class="item" data-category="<?php echo $row['categoria']; ?>">
+									<div class="item" data-category="<?php echo $categoria; ?>">
 
-										<img src="images/galeria/<?php echo $row['archivo']; ?>" 
-											 loading="lazy"
-										     alt="">
+										<img src="images/galeria/<?php echo $archivo; ?>"
+											loading="lazy"
+											alt="<?php echo $titulo; ?>"
+											class="gallery-img"
+
+											data-imagen="images/galeria/<?php echo $archivo; ?>"
+											data-titulo="<?php echo $titulo; ?>"
+											data-categoria="<?php echo $categoria; ?>"
+											data-fecha="<?php echo $fecha; ?>"
+											data-descripcion="<?php echo $descripcion; ?>">
 
 										<div class="overlay">
-										<h3><?php echo $row['titulo']; ?></h3>
+											<h3><?php echo $titulo; ?></h3>
 										</div>
 
 									</div>
 
 									<?php endwhile; ?>
+									
+									<?php include("includes/modal_galeria.php"); ?>
 
 									</div>
 
@@ -80,6 +96,7 @@ $result = $conexion->query($sql);
 			</div>
             <!-- Scripts --> 
             <?php include("includes/scripts.php"); ?>
+			<script src="assets/js/galeria.js"></script>
 
 
 	</body>

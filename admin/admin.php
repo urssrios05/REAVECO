@@ -39,7 +39,7 @@ header("Expires: 0");
 				<a href="#">
 					<i class='bx bxs-image' ></i>
 					
-					<span class="text">Galeria</span>
+					<span class="text">Imagenes</span>
 				</a>
 			</li>
 		</ul>
@@ -88,14 +88,15 @@ header("Expires: 0");
 					<ul class="todo-list">
 						<form action="actions/guardar.php" method="POST" enctype="multipart/form-data" class="form-upload">
 
-							<input type="text" name="titulo" placeholder="Título" required>
-							
 							<select type="select" name="categoria" placeholder="Categoria" required>
 								<option disabled selected>Categoria</option>
 								<option value="manzana">Manzana</option>
 								<option value="naranja">Naranja</option>
 								<option value="platano">Plátano</option>
 							</select>
+							<input type="text" name="titulo" placeholder="Título" required>
+							<textarea type="text" placeholder="descripcion" required name="descripcion"></textarea>
+
 
 							<!-- INPUT FILE -->
 							<input type="file" name="imagen" id="imagenInput" required>
@@ -121,6 +122,7 @@ header("Expires: 0");
 								<th>Imagen</th>
 								<th>Título</th>
 								<th>Categoría</th>
+								<th>descripcion</th>
 								<th>Acciones</th>
 							</tr>
 						</thead>
@@ -130,26 +132,34 @@ header("Expires: 0");
 							$result = $conexion->query($sql);
 
 							while($row = $result->fetch_assoc()):
+								$id = (int) $row['id'];
+								$archivo = htmlspecialchars($row['archivo'], ENT_QUOTES, 'UTF-8');
+								$titulo = htmlspecialchars($row['titulo'], ENT_QUOTES, 'UTF-8');
+								$categoria = htmlspecialchars($row['categoria'], ENT_QUOTES, 'UTF-8');
+								$descripcion = htmlspecialchars($row['descripcion'], ENT_QUOTES, 'UTF-8');
 							?>
 							<tr>
 								<td>
-									<img src="../images/galeria/<?php echo $row['archivo']; ?>" width="80" style="border-radius:8px;">
+									<img src="../images/galeria/<?php echo $archivo; ?>" width="80" style="border-radius:8px;">
 								</td>
 
-								<td><?php echo $row['titulo']; ?></td>
+								<td><?php echo $titulo; ?></td>
 
-								<td><?php echo $row['categoria']; ?></td>
+								<td><?php echo $categoria; ?></td>
+
+								<td><?php echo $descripcion; ?></td>							
 
 								<td>
 									<a href="#"
 									class="btn-editar"
-									data-id="<?php echo $row['id']; ?>"
-									data-titulo="<?php echo $row['titulo']; ?>"
-									data-categoria="<?php echo $row['categoria']; ?>">
+									data-id="<?php echo $id; ?>"
+									data-titulo="<?php echo $titulo; ?>"
+									data-categoria="<?php echo $categoria; ?>"
+									data-descripcion="<?php echo $descripcion; ?>">
 									✏️
 									</a>
 									|
-									<a href="actions/eliminar.php?id=<?php echo $row['id']; ?>" 
+									<a href="actions/eliminar.php?id=<?php echo $id; ?>" 
 									onclick="return confirm('¿Eliminar imagen?')">🗑️</a>
 								</td>
 							</tr>
@@ -161,6 +171,7 @@ header("Expires: 0");
 				</div>
 				
 			</div>
+
 		</main>
 		<!-- MAIN -->
 	</section>

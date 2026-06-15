@@ -7,8 +7,17 @@ if (!isset($_SESSION['admin'])) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $titulo = $_POST['titulo'];
-    $categoria = $_POST['categoria'];
+    $titulo = trim($_POST['titulo'] ?? '');
+    $categoria = trim($_POST['categoria'] ?? '');
+    $descripcion = trim($_POST['descripcion'] ?? '');
+
+    if ($titulo === '' || $categoria === '' || $descripcion === '') {
+        die("Todos los campos son obligatorios");
+    }
+
+    if (!isset($_FILES['imagen']) || $_FILES['imagen']['error'] !== UPLOAD_ERR_OK) {
+        die("Error al subir la imagen");
+    }
 
     // 📁 carpeta destino
     $carpeta = "../../images/galeria/";
@@ -16,20 +25,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // 📸 imagen temporal
     $nombreTmp = $_FILES['imagen']['tmp_name'];
 
+    $infoImagen = getimagesize($nombreTmp);
+    if ($infoImagen === false) {
+        die("El archivo debe ser una imagen valida");
+    }
+
     // 🏷️ nombre optimizado
     $nombreArchivo = "reaveco_img_" . uniqid() . ".jpg";
 
     // 📏 obtener dimensiones originales
-    list($ancho, $alto) = getimagesize($nombreTmp);
+    list($ancho, $alto) = $infoImagen;
+
+    if ($ancho <= 0 || $alto <= 0) {
+        die("La imagen no tiene dimensiones validas");
+    }
 
     // 📐 tamaño máximo
-    $nuevoAncho = 1200;
+    $nuevoAncho = min(1200, $ancho);
 
     // mantener proporción
     $nuevoAlto = ($alto / $ancho) * $nuevoAncho;
 
     // 🖼️ crear imagen original
     $imagenOriginal = imagecreatefromstring(file_get_contents($nombreTmp));
+    if (!$imagenOriginal) {
+        die("No se pudo procesar la imagen");
+    }
 
     // 🖼️ nuevo lienzo
     $imagenNueva = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
@@ -54,12 +75,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // 🗃️ guardar en BD
     $stmt = $conexion->prepare("
-        INSERT INTO reaveco_imagenes 
-        (titulo, categoria, archivo) 
-        VALUES (?, ?, ?)
+        INSERT INTO reaveco_imagenes
+        (titulo, categoria, descripcion, archivo)
+        VALUES (?, ?, ?, ?)
     ");
 
-    $stmt->bind_param("sss", $titulo, $categoria, $nombreArchivo);
+    $stmt->bind_param(
+        "ssss",
+        $titulo,
+        $categoria,
+        $descripcion,
+        $nombreArchivo
+    );
 
     $stmt->execute();
 

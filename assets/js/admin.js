@@ -83,6 +83,7 @@ document.querySelectorAll('.btn-editar').forEach(btn => {
         document.getElementById('edit-id').value = this.dataset.id;
         document.getElementById('edit-titulo').value = this.dataset.titulo;
         document.getElementById('edit-categoria').value = this.dataset.categoria;
+        document.getElementById('edit-descripcion').value = this.dataset.descripcion;
     });
 });
 

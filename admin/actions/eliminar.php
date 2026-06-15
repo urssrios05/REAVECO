@@ -12,15 +12,17 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 $id = intval($_GET['id']);
 
 // Obtener archivo
-$sql = "SELECT archivo FROM reaveco_imagenes WHERE id = $id";
-$result = $conexion->query($sql);
+$stmt = $conexion->prepare("SELECT archivo FROM reaveco_imagenes WHERE id = ?");
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$result = $stmt->get_result();
 
 if ($result->num_rows === 0) {
     die("Imagen no encontrada");
 }
 
 $row = $result->fetch_assoc();
-$archivo = $row['archivo'];
+$archivo = basename($row['archivo']);
 
 $ruta = "../../images/galeria/" . $archivo;
 
@@ -30,9 +32,10 @@ if (file_exists($ruta)) {
 }
 
 // Eliminar de la BD
-$sql = "DELETE FROM reaveco_imagenes WHERE id = $id";
+$stmt = $conexion->prepare("DELETE FROM reaveco_imagenes WHERE id = ?");
+$stmt->bind_param("i", $id);
 
-if ($conexion->query($sql)) {
+if ($stmt->execute()) {
     header("Location: ../admin.php?msg=eliminado");
 } else {
     echo "Error al eliminar";
