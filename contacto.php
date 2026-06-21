@@ -166,6 +166,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     color: var(--text-main);
     font-size: .95em;
     line-height: 1.5;
+    word-break: break-all;
+    overflow-wrap: anywhere;
 }
 
 .contact-card a {
