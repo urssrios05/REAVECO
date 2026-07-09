@@ -27,7 +27,7 @@ header("Expires: 0");
 
 	<!-- SIDEBAR -->
 	 
-	<section id="sidebar">
+	<section id="sidebar" class="hide">
 		<a href="#" class="brand">
 			<i class='bx bxs-dashboard'></i>
 			<span class="text">Reaveco|Dash</span>
@@ -53,7 +53,7 @@ header("Expires: 0");
 			</li>
 			<li>
 				<a href="actions/logout.php" class="logout">
-					<i class='bx bxs-log-out-circle' ></i>
+					<i class='bx bxs-exit' ></i>
 					<span class="text">cerrar sesión</span>
 				</a>
 			</li>
@@ -73,9 +73,54 @@ header("Expires: 0");
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Administrador de galeria</h1>
+					<h1>Administrador de imagenes</h1>
 					<ul class="breadcrumb">
 					</ul>
+				</div>
+			</div>
+
+			<div class="table-data">
+				<div class="order">
+					<div class="head">
+						<h3>Imagenes de inicio</h3>
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>Seccion</th>
+								<th>Imagen actual</th>
+								<th>Nueva imagen</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php
+							$imagenesInicio = [
+								'mision' => ['titulo' => 'Mision', 'archivo' => 'pic01.jpg'],
+								'vision' => ['titulo' => 'Vision', 'archivo' => 'pic02.jpg'],
+								'valores' => ['titulo' => 'Valores', 'archivo' => 'pic03.jpg']
+							];
+
+							foreach ($imagenesInicio as $seccion => $imagenInicio):
+								$tituloInicio = htmlspecialchars($imagenInicio['titulo'], ENT_QUOTES, 'UTF-8');
+								$archivoInicio = htmlspecialchars($imagenInicio['archivo'], ENT_QUOTES, 'UTF-8');
+								$seccionInicio = htmlspecialchars($seccion, ENT_QUOTES, 'UTF-8');
+							?>
+							<tr>
+								<td><?php echo $tituloInicio; ?></td>
+								<td>
+									<img class="admin-thumb admin-thumb-home" src="../images/inicio/<?php echo $archivoInicio; ?>?v=<?php echo filemtime("../images/inicio/" . $imagenInicio['archivo']); ?>" alt="<?php echo $tituloInicio; ?>">
+								</td>
+								<td>
+									<form action="actions/actualizar_inicio.php" method="POST" enctype="multipart/form-data" class="form-upload">
+										<input type="hidden" name="seccion" value="<?php echo $seccionInicio; ?>">
+										<input type="file" name="imagen" accept="image/inicio/*" required>
+										<button type="submit">Actualizar</button>
+									</form>
+								</td>
+							</tr>
+							<?php endforeach; ?>
+						</tbody>
+					</table>
 				</div>
 			</div>
 
@@ -83,7 +128,7 @@ header("Expires: 0");
 
 				<div class="todo">
 					<div class="head">
-						<h3>Carga de imagenes</h3>
+						<h3>Imagenes de galeria</h3>
 					</div>
 					<ul class="todo-list">
 						<form action="actions/guardar.php" method="POST" enctype="multipart/form-data" class="form-upload">
@@ -140,7 +185,7 @@ header("Expires: 0");
 							?>
 							<tr>
 								<td>
-									<img src="../images/galeria/<?php echo $archivo; ?>" width="80" style="border-radius:8px;">
+									<img class="admin-thumb admin-thumb-gallery" src="../images/galeria/<?php echo $archivo; ?>" alt="<?php echo $titulo; ?>">
 								</td>
 
 								<td><?php echo $titulo; ?></td>

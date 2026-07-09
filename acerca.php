@@ -19,7 +19,7 @@
  									<li><a href="galeria.php">Galeria</a></li>                                   
 									<li class="current"><a href="acerca.php">Acerca de nosotros</a></li>
 									<li><a href="contacto.php">Contacto</a></li>
-									<li><a href="https://www.eucomex.com.mx/portafolio/productos/">Productos</a></li>
+									<li><a href="https://www.eucomex.com.mx/portafolio/productos/" target="_blank" rel="noopener noreferrer" >Productos</a></li>
 								</ul>
 							</nav>
 
@@ -30,7 +30,7 @@
 <div id="features-wrapper">
     <section class="about-hero">
         <div class="about-img">
-            <img src="images/about2.jpg" alt="Trabajo en obra">
+            <img src="images/acerca/about2.jpg" alt="Trabajo en obra">
         </div>
 
         <div class="about-text">
@@ -61,13 +61,13 @@
     <div class="container">
         <section class="grid">
             <div class="card shadow">
-                <img src="images/logo1.jpeg" class="card-img-mv">
+                <img src="images/acerca/mision.jpg" class="card-img-mv">
                 <h3>Misión</h3>
                 <p>En REAVECO tenemos como misión ofrecer productos y servicios confiables e integrales para la industria de la construcción. Así como brindar asesoría profesional, atención al cliente de calidad y soluciones innovadoras, con un enfoque humano y empático para satisfacer las necesidades específicas de cada cliente....</p>
             </div>
 
             <div class="card shadow">
-                <img src="images/logo2.jpg" class="card-img-mv">
+                <img src="images/acerca/vision.jpg" class="card-img-mv">
                 <h3>Visión</h3>
                 <p>La visión de Reaveco Soluciones en Concreto y Construcción es ofrecer asesoría profesional e integral a la industria de la construcción. Buscar solucionar cualquier necesidad en obra con un enfoque humano, empático, de servicio y un sentido innovador, proporcionando productos de la más alta calidad....</p>
             </div>
@@ -101,37 +101,37 @@
 
             <div class="grid">
                 <div class="card shadow">
-                    <img src="images/pic01.jpg" class="card-img">
+                    <img src="images/acerca/pic01.jpg" class="card-img">
                     <h3>Soluciones en concreto</h3>
                     <p>Reparación de elementos estructurales...</p>
                 </div>
 
                 <div class="card shadow">
-                    <img src="images/pic02.jpg" class="card-img">
+                    <img src="images/acerca/pic02.jpg" class="card-img">
                     <h3>Sistemas constructivos</h3>
                     <p>Aplicación de impermeabilizantes...</p>
                 </div>
 
                 <div class="card shadow">
-                    <img src="images/pic03.jpg" class="card-img">
+                    <img src="images/acerca/pic03.jpg" class="card-img">
                     <h3>Asesoría especializada</h3>
                     <p>Capacitación y acompañamiento técnico...</p>
                 </div>
 
                 <div class="card shadow">
-                    <img src="images/pic04.jpg" class="card-img">
+                    <img src="images/acerca/pic04.jpg" class="card-img">
                     <h3>Control de calidad</h3>
                     <p>Pruebas y análisis en obra...</p>
                 </div>
 
                 <div class="card shadow">
-                    <img src="images/pic05.jpg" class="card-img">
+                    <img src="images/acerca/pic05.jpg" class="card-img">
                     <h3>Diseño de mezclas</h3>
                     <p>Desarrollo de mezclas de concreto...</p>
                 </div>
 
                 <div class="card shadow">
-                    <img src="images/pic06.jpg" class="card-img">
+                    <img src="images/acerca/pic06.jpg" class="card-img">
                     <h3>Pavimentos</h3>
                     <p>Construcción y acabado de pisos...</p>
                 </div>

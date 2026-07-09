@@ -19,7 +19,7 @@
  									<li><a href="galeria.php">Galeria</a></li>                                   
 									<li><a href="acerca.php">Acerca de nosotros</a></li>
 									<li class="current"><a href="contacto.php">Contacto</a></li>
-									<li><a href="https://www.eucomex.com.mx/portafolio/productos/">Productos</a></li>
+									<li><a href="https://www.eucomex.com.mx/portafolio/productos/" target="_blank" rel="noopener noreferrer">Productos</a></li>
 								</ul>
 							</nav>
 

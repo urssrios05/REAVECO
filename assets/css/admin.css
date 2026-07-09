@@ -612,6 +612,111 @@ table td a:hover {
 #content main .table-data .todo .todo-list li:last-child {
 	margin-bottom: 0;
 }
+
+/* Formularios unificados */
+#content main .form-upload,
+.modal form {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+#content main .form-upload input[type="text"],
+#content main .form-upload input[type="file"],
+#content main .form-upload select,
+#content main .form-upload textarea,
+.modal input[type="text"],
+.modal select,
+.modal textarea {
+	width: 100%;
+	min-height: 44px;
+	padding: 10px 12px;
+	border: 1px solid #d8dbe2;
+	border-radius: 8px;
+	background: #fff;
+	color: var(--dark);
+	font-family: var(--poppins);
+	font-size: 14px;
+	line-height: 1.4;
+	outline: none;
+	transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+#content main .form-upload textarea,
+.modal textarea {
+	min-height: 110px;
+	resize: vertical;
+}
+
+#content main .form-upload input[type="file"] {
+	cursor: pointer;
+	background: var(--grey);
+}
+
+#content main .form-upload input:focus,
+#content main .form-upload select:focus,
+#content main .form-upload textarea:focus,
+.modal input:focus,
+.modal select:focus,
+.modal textarea:focus {
+	border-color: var(--blue);
+	box-shadow: 0 0 0 3px rgba(60, 145, 230, .18);
+}
+
+#content main .form-upload button,
+.modal button {
+	min-height: 44px;
+	padding: 10px 16px;
+	border: none;
+	border-radius: 8px;
+	background: var(--blue);
+	color: white;
+	font-family: var(--poppins);
+	font-size: 14px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+
+#content main .form-upload button:hover,
+.modal button:hover {
+	background: #0373e3;
+	box-shadow: 0 8px 18px rgba(60, 145, 230, .22);
+	transform: translateY(-1px);
+}
+
+#content main .form-upload button:active,
+.modal button:active {
+	transform: scale(.98);
+}
+
+#content main .table-data .order table td .form-upload {
+	display: grid;
+	grid-template-columns: minmax(180px, 1fr) auto;
+	align-items: center;
+	gap: 10px;
+}
+
+#content main .table-data .order table td .form-upload input[type="file"],
+#content main .table-data .order table td .form-upload button {
+	min-height: 40px;
+}
+
+#content main .table-data .order table td img.admin-thumb {
+	display: block;
+	border-radius: 8px;
+	object-fit: cover;
+}
+
+#content main .table-data .order table td img.admin-thumb-home {
+	width: 120px;
+	height: 95px;
+}
+
+#content main .table-data .order table td img.admin-thumb-gallery {
+	width: 64px;
+	height: 64px;
+}
 /* MAIN */
 
 /* CONTENT */
@@ -628,16 +733,15 @@ table td a:hover {
 
 .modal-content {
   background:  var(--blue);
-  width: 500px;
-  height: 400px;
+  width: min(500px, calc(100% - 32px));
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
   margin: 10% auto;
   padding: 20px;
   background: #fff;
-  border-radius: 5px;
+  border-radius: 8px;
   box-shadow: 0px 0px 7px 5px rgba(0, 0, 0, 0.1);
 }
-
-
 
 
 

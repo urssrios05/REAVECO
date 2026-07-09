@@ -1,103 +1,145 @@
-<?php
-require_once("includes/conexion_frond.php");
-
-$sql = "SELECT * FROM reaveco_imagenes ORDER BY id DESC";
-$result = $conexion->query($sql);
-?>
-
+<?php include("includes/includes_galeria.php"); ?>
 <!DOCTYPE HTML>
 <html>
-    <?php include("includes/head.php"); ?>
-	
-			<!-- Header -->
-				<div id="header-wrapper">
-					<header id="header" class="container">
+<?php include("includes/head.php"); ?>
 
-						<!-- Logo -->
-							<div id="logo">
-								<h1><a href="index.php"><img src="images/logo.png" alt=""></a></h1>
-								<span></span>
-							</div>
+<body>
+<!-- Header -->
+<div id="header-wrapper">
+	<header id="header" class="container">
+	<!-- Logo -->
+		<div id="logo">
+			<h1><a href="index.php"><img src="images/logo.png" alt=""></a></h1>
+			<span></span>
+		</div>
+	<!-- Navefacion -->
+		<nav id="nav">
+		<ul>
+			<li><a href="index.php">Inicio</a></li>
+ 			<li class="current"><a href="galeria.php">Galeria</a></li>                                   
+			<li><a href="acerca.php">Acerca de nosotros</a></li>
+			<li><a href="contacto.php">Contacto</a></li>
+			<li><a href="https://www.eucomex.com.mx/portafolio/productos/" target="_blank" rel="noopener noreferrer" >Productos</a></li>
+		</ul>
+		</nav>
 
-						<!-- Navefacion -->
-							<nav id="nav">
-								<ul>
-									<li><a href="index.php">Inicio</a></li>
- 									<li class="current"><a href="galeria.php">Galeria</a></li>                                   
-									<li><a href="acerca.php">Acerca de nosotros</a></li>
-									<li><a href="contacto.php">Contacto</a></li>
-									<li><a href="https://www.eucomex.com.mx/portafolio/productos/">Productos</a></li>
-								</ul>
-							</nav>
+	</header>
+</div>
 
-					</header>
-				</div>
+<div id="main-wrapper">
+	<div class="container">
+		<div id="content">
 
-            			<!-- Main -->
-				<div id="main-wrapper">
-					<div class="container">
-						<div id="content">
+		<h2>Galeria</h2>
 
-							<!-- Content -->
+		<!-- FILTROS -->
+		<div class="filters">
 
-									<h2>Galeria</h2>
+		<a href="galeria.php?categoria=all"
+		class="filter <?php echo ($categoria == 'all') ? 'active' : ''; ?>">
+		Todos
+		</a>
 
-									<!-- FILTROS -->
-									<div class="filters">
-									<button class="filter active" data-filter="all">Todos</button>
-									<button class="filter" data-filter="manzana">Manzana</button>
-									<button class="filter" data-filter="naranja">Naranja</button>
-									<button class="filter" data-filter="platano">Plátano</button>
-									</div>
+		<a href="galeria.php?categoria=manzana"
+		class="filter <?php echo ($categoria == 'manzana') ? 'active' : ''; ?>">
+		Manzana
+		</a>
 
-									<!-- GALERÍA -->
-									<div class="gallery">
+		<a href="galeria.php?categoria=naranja"
+		class="filter <?php echo ($categoria == 'naranja') ? 'active' : ''; ?>">
+		Naranja
+		</a>
 
-									<?php while($row = $result->fetch_assoc()): ?>
-									<?php
-										$archivo = htmlspecialchars($row['archivo'], ENT_QUOTES, 'UTF-8');
-										$titulo = htmlspecialchars($row['titulo'], ENT_QUOTES, 'UTF-8');
-										$categoria = htmlspecialchars($row['categoria'], ENT_QUOTES, 'UTF-8');
-										$fecha = htmlspecialchars($row['fecha'], ENT_QUOTES, 'UTF-8');
-										$descripcion = htmlspecialchars($row['descripcion'], ENT_QUOTES, 'UTF-8');
-									?>
+		<a href="galeria.php?categoria=platano"
+		class="filter <?php echo ($categoria == 'platano') ? 'active' : ''; ?>">
+		Plátano
+		</a>
 
-									<div class="item" data-category="<?php echo $categoria; ?>">
+		</div>
 
-										<img src="images/galeria/<?php echo $archivo; ?>"
-											loading="lazy"
-											alt="<?php echo $titulo; ?>"
-											class="gallery-img"
+		<!-- GALERÍA -->
+		<div class="gallery">
 
-											data-imagen="images/galeria/<?php echo $archivo; ?>"
-											data-titulo="<?php echo $titulo; ?>"
-											data-categoria="<?php echo $categoria; ?>"
-											data-fecha="<?php echo $fecha; ?>"
-											data-descripcion="<?php echo $descripcion; ?>">
+		<?php while($row = $result->fetch_assoc()): ?>
 
-										<div class="overlay">
-											<h3><?php echo $titulo; ?></h3>
-										</div>
+		<?php
+			$archivo = htmlspecialchars($row['archivo'], ENT_QUOTES, 'UTF-8');
+			$titulo = htmlspecialchars($row['titulo'], ENT_QUOTES, 'UTF-8');
 
-									</div>
+			// ⚠️ IMPORTANTE: NO pisamos $categoria
+			$catItem = htmlspecialchars($row['categoria'], ENT_QUOTES, 'UTF-8');
 
-									<?php endwhile; ?>
-									
-									<?php include("includes/modal_galeria.php"); ?>
+			$meses = [
+				1 => 'enero', 2 => 'febrero', 3 => 'marzo',
+				4 => 'abril', 5 => 'mayo', 6 => 'junio',
+				7 => 'julio', 8 => 'agosto', 9 => 'septiembre',
+				10 => 'octubre', 11 => 'noviembre', 12 => 'diciembre'
+			];
 
-									</div>
+			$fechaObj = new DateTime($row['fecha']);
+			$fechaFormateada = $fechaObj->format('d') . ' de ' .
+							$meses[(int)$fechaObj->format('n')] . ' de ' .
+							$fechaObj->format('Y');
 
-						</div>
-					</div>
-				</div>
+			$fecha = htmlspecialchars($fechaFormateada, ENT_QUOTES, 'UTF-8');
+			$descripcion = htmlspecialchars($row['descripcion'], ENT_QUOTES, 'UTF-8');
+		?>
 
-			<!-- Footer -->
-			 <?php include("includes/footer.php"); ?>
+		<div class="item" data-category="<?php echo $catItem; ?>">
+
+			<img src="images/galeria/<?php echo $archivo; ?>"
+				loading="lazy"
+				alt="<?php echo $titulo; ?>"
+				class="gallery-img"
+
+				data-imagen="images/galeria/<?php echo $archivo; ?>"
+				data-titulo="<?php echo $titulo; ?>"
+				data-categoria="<?php echo $catItem; ?>"
+				data-fecha="<?php echo $fecha; ?>"
+				data-descripcion="<?php echo $descripcion; ?>">
+
+			<div class="overlay">
+				<h3><?php echo $titulo; ?></h3>
 			</div>
-            <!-- Scripts --> 
-            <?php include("includes/scripts.php"); ?>
-			<script src="assets/js/galeria.js"></script>
 
+		</div>
 
-	</body>
+		<?php endwhile; ?>
+
+		<?php include("includes/modal_galeria.php"); ?>
+
+		</div>
+
+		<!-- PAGINACIÓN -->
+		<div class="pagination">
+
+		<?php if ($pagina > 1): ?>
+			<a href="galeria.php?categoria=<?php echo $categoria; ?>&pagina=<?php echo $pagina - 1; ?>">← Anterior</a>
+		<?php endif; ?>
+
+		<?php for ($i = 1; $i <= $totalPaginas; $i++): ?>
+			<a href="galeria.php?categoria=<?php echo $categoria; ?>&pagina=<?php echo $i; ?>"
+			class="<?php echo ($i == $pagina) ? 'active' : ''; ?>">
+				<?php echo $i; ?>
+			</a>
+		<?php endfor; ?>
+
+		<?php if ($pagina < $totalPaginas): ?>
+			<a href="galeria.php?categoria=<?php echo $categoria; ?>&pagina=<?php echo $pagina + 1; ?>">
+				Siguiente →
+			</a>
+		<?php endif; ?>
+
+		</div>
+
+		</div>
+	</div>
+</div>
+
+<?php include("includes/footer.php"); ?>
+<?php include("includes/scripts.php"); ?>
+
+<script src="assets/js/galeria.js"></script>
+
+</body>
 </html>

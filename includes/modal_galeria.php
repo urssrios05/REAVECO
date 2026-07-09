@@ -4,8 +4,25 @@
 
         <span class="gallery-close">&times;</span>
 
-        <img id="modalImage" src="" alt="">
+        <!-- CONTENEDOR DE IMAGEN -->
+        <div class="gallery-image-container">
 
+            <!-- Flecha anterior -->
+            <button id="prevImage" class="gallery-nav prev">
+                &#10094;
+            </button>
+
+            <!-- Imagen -->
+            <img id="modalImage" src="" alt="">
+
+            <!-- Flecha siguiente -->
+            <button id="nextImage" class="gallery-nav next">
+                &#10095;
+            </button>
+
+        </div>
+
+        <!-- INFORMACIÓN -->
         <div class="gallery-info">
 
             <h2 id="modalTitulo"></h2>
