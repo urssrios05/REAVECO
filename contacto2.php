@@ -155,7 +155,6 @@
 			</div>
             <!-- Scripts --> 
             <?php include("includes/scripts.php"); ?>
-            /**lkl */
 
 
 	</body>

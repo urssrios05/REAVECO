@@ -1,10 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <?php include("includes/head.php"); ?>
-	
 
-
-			<!-- Header -->
 			<!-- Header -->
 				<div id="header-wrapper">
 					<header id="header" class="container">
@@ -22,7 +19,7 @@
  									<li><a href="galeria.php">Galeria</a></li>                                   
 									<li><a href="acerca.php">Acerca de nosotros</a></li>
 									<li><a href="contacto.php">Contacto</a></li>
-									<li><a href="https://www.eucomex.com.mx/portafolio/productos/">Productos</a></li>
+									<li><a href="https://www.eucomex.com.mx/portafolio/productos/" target="_blank" rel="noopener noreferrer" >Productos</a></li>
 								</ul>
 							</nav>
 
@@ -41,8 +38,8 @@
 							</div>
 							<div class="col-5 col-12-medium">
 								<ul>
-									<li><a href="#" class="button large icon solid fa-arrow-circle-right">Ir a Productos</a></li>
-									<li><a href="#" class="button alt large icon solid fa-question-circle">Contacto</a></li>
+									<li><a href="https://www.eucomex.com.mx/portafolio/productos/" target="_blank" rel="noopener noreferrer" class="button large icon solid fa-arrow-circle-right">Ir a Productos</a></li>
+									<li><a href="contacto.php" class="button alt large icon solid fa-question-circle">Contacto</a></li>
 								</ul>
 							</div>
 						</div>
@@ -57,7 +54,7 @@
 
 								<!-- Box -->
 									<section class="box feature">
-										<a href="#" class="image featured"><img src="images//pic01.jpg" alt="" /></a>
+										<a href="#" class="image featured"><img src="images/inicio/pic01.jpg?v=<?php echo filemtime("images/inicio/pic01.jpg"); ?>" alt="Mision" /></a>
 										<div class="inner">
 											<header>
 												<h2>Mision</h2>
@@ -73,7 +70,7 @@
 
 								<!-- Box -->
 									<section class="box feature">
-										<a href="#" class="image featured"><img src="images//pic02.jpg" alt="" /></a>
+										<a href="#" class="image featured"><img src="images/inicio/pic02.jpg?v=<?php echo filemtime("images/inicio/pic02.jpg"); ?>" alt="Vision" /></a>
 										<div class="inner">
 											<header>
 												<h2>Vision</h2> 
@@ -89,7 +86,7 @@
 
 								<!-- Box -->
 									<section class="box feature">
-										<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
+										<a href="#" class="image featured"><img src="images/inicio/pic03.jpg?v=<?php echo filemtime("images/inicio/pic03.jpg"); ?>" alt="Valores" /></a>
 										<div class="inner">
 											<header>
 												<h2>Valores</h2> 

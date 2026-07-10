@@ -1,0 +1,82 @@
+/* CONTACTO */
+
+.contact-header {
+    margin-bottom: 40px;
+}
+
+.contact-header h2 {
+    margin-bottom: 10px;
+}
+
+.contact-container {
+    display: flex;
+    gap: 40px;
+    align-items: stretch;
+    margin-bottom: 40px;
+}
+
+.contact-info {
+    flex: 1;
+    background: #f7f7f7;
+    padding: 35px;
+    border-radius: 10px;
+}
+
+.contact-form {
+    flex: 2;
+    background: #fff;
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.08);
+}
+
+.contact-item {
+    margin-bottom: 25px;
+}
+
+.contact-item h4 {
+    margin-bottom: 8px;
+    color: #000000;
+}
+
+.contact-map {
+    margin-top: 20px;
+}
+
+.contact-map iframe {
+    border-radius: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+
+    .contact-container {
+        flex-direction: column;
+    }
+
+    .contact-info,
+    .contact-form {
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+
+    .contact-container {
+        flex-direction: column;
+    }
+
+    .contact-info {
+        order: 1;
+    }
+
+    .contact-form {
+        order: 2;
+    }
+
+}
