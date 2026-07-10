@@ -100,12 +100,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 #contacto-page {
     padding: 3em 0 4em;
     background: var(--bg-alt);
+    border-radius: var(--radius);
+    box-sizing: border-box;
 }
 
 #contacto-page h2.page-title {
     font-size: 2em;
     color: var(--text-main);
     margin-bottom: .3em;
+    padding: 0 1.5rem;
 }
 
 #contacto-page .page-subtitle {
@@ -113,6 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     font-size: 1.05em;
     margin-bottom: 2.5em;
     max-width: 600px;
+    padding: 0 1.5rem;
 }
 
 /* ── Tarjetas de info ───────────────────────────────── */
@@ -121,6 +125,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1.2em;
     margin-bottom: 2.5em;
+    padding: 0 1.5rem;
+    align-items: stretch;
 }
 
 .contact-card {
@@ -131,8 +137,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     display: flex;
     align-items: flex-start;
     gap: 1em;
+    min-width: 0;
+    height: 100%;
     box-shadow: var(--shadow);
     transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.contact-card > div:last-child {
+    min-width: 0;
 }
 
 .contact-card:hover {
@@ -166,8 +178,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     color: var(--text-main);
     font-size: .95em;
     line-height: 1.5;
-    word-break: break-all;
-    overflow-wrap: anywhere;
+    overflow-wrap: break-word;
 }
 
 .contact-card a {
@@ -180,9 +191,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 /* ── Columnas principales ───────────────────────────── */
 .contact-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1.1fr) minmax(320px, .9fr);
     gap: 2em;
-    align-items: start;
+    align-items: stretch;
+    padding: 0 1.5rem;
 }
 
 @media (max-width: 768px) {
@@ -196,11 +208,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     border-radius: var(--radius);
     padding: 2em;
     box-shadow: var(--shadow);
+    min-width: 0;
+    height: 100%;
 }
 
 .contact-panel h3 {
     font-size: 1.15em;
     color: var(--text-main);
+    margin-top: 0;
     margin-bottom: 1.2em;
     padding-bottom: .6em;
     border-bottom: 2px solid var(--accent-light);
@@ -212,14 +227,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 .contact-panel h3 i { color: var(--accent); }
 
 /* ── Horario ────────────────────────────────────────── */
-.schedule-table { width: 100%; border-collapse: collapse; }
+.schedule-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
 .schedule-table td {
     padding: .5em .3em;
     font-size: .95em;
     border-bottom: 1px solid var(--border);
     color: var(--text-main);
+    vertical-align: top;
+    overflow-wrap: break-word;
 }
-.schedule-table td:first-child { font-weight: 600; width: 55%; }
+.schedule-table td:first-child { font-weight: 600; width: 42%; }
 .schedule-table tr:last-child td { border-bottom: none; }
 .badge-open {
     display: inline-block;
@@ -333,6 +350,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     overflow: hidden;
     box-shadow: var(--shadow);
     margin-top: 2em;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
 }
 
 .map-panel h3 {
@@ -353,6 +372,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     width: 100%;
     height: 360px;
     border: none;
+}
+
+@media (max-width: 768px) {
+    #contacto-page {
+        padding-top: 2em;
+    }
+
+    #contacto-page h2.page-title,
+    #contacto-page .page-subtitle,
+    .contact-cards,
+    .contact-grid {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .contact-panel {
+        padding: 1.4em;
+    }
+
+    .map-panel {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
 }
 </style>
 

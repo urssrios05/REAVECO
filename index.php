@@ -33,8 +33,8 @@
 							<div id="texto-p" class="col-7 col-12-medium">
 								<h2>Bienvenido a REAVECO</h2>
 								<h4>Somos una empresa dedicada a la venta de concretos..</h4>
-								<p1>En REAVECO, nos dedicamos a brindarles a nuestros clientes un servicio cordial. 
-									valoramos su negocio. Nuestra misión es ofrecer productos y servicios confiables con un enfoque orientado al cliente..... </p1>
+								<p2>En REAVECO, nos dedicamos a brindarles a nuestros clientes un servicio cordial. 
+									valoramos su negocio. Nuestra misión es ofrecer productos y servicios confiables con un enfoque orientado al cliente..... </p2>
 							</div>
 							<div class="col-5 col-12-medium">
 								<ul>
@@ -151,7 +151,7 @@
 											<h2>Conoce un poco sobre nosotros</h2>
 											<p>REAVECO Soluciones en Concreto y Construcción es una empresa basada en Veracruz, fundada en 2016, 
 											   que ofrece asesoría profesional, productos y servicios integrales para la industria de la construcción. 
-											   En REAVECO nos distinguimos por un servicio cordial y productos de alta calidad para satisfacer necesidades específicas de obra.
+											   En REAVECO nos distinguimos por un servicio cordial y productos de alta calidad para satisfacer necesidades específicas de obra.</p>
 
 											<p>Nuestro equipo atento y profesional puede brindar una variedad de servicios para satisfacer sus requisitos.</p>
 											<a href="acerca.php" class="button alt icon solid fa-arrow-circle-right">Continua leyendo</a>

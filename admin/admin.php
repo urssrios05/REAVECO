@@ -113,7 +113,7 @@ header("Expires: 0");
 								<td>
 									<form action="actions/actualizar_inicio.php" method="POST" enctype="multipart/form-data" class="form-upload">
 										<input type="hidden" name="seccion" value="<?php echo $seccionInicio; ?>">
-										<input type="file" name="imagen" accept="image/inicio/*" required>
+										<input type="file" name="imagen" accept="image/*" required>
 										<button type="submit">Actualizar</button>
 									</form>
 								</td>

@@ -6,7 +6,12 @@ $porPagina = 12;
 $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 if ($pagina < 1) $pagina = 1;
 
+$categoriasPermitidas = ['all', 'manzana', 'naranja', 'platano'];
 $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : 'all';
+
+if (!in_array($categoria, $categoriasPermitidas, true)) {
+    $categoria = 'all';
+}
 
 $inicio = ($pagina - 1) * $porPagina;
 
